@@ -1,4 +1,5 @@
-
+let playerWin = 0;
+let computerWin = 0;
 
 // Random Choice for Computer
 function getComputerChoice(){
@@ -43,8 +44,14 @@ function playRound(playerChoice, compChoice){
     }
 
     if (outcome){
+        playerWin++;
+        updateScoreText();
+        console.log(`${playerWin} - ${computerWin}`);
         return `"You Win! ${playerChoice} beats ${compChoice}"`
     } else {
+        computerWin++;
+        updateScoreText();
+        console.log(`${playerWin} - ${computerWin}`);
         return `"You Lose! ${compChoice} beats ${playerChoice}"`
     }
 }
@@ -66,21 +73,28 @@ function game(){
 let selections = document.querySelector('.selections');
 
 selections.addEventListener('click', (e) => {
-    let target = e.target;
+    let displayText = document.querySelector('.display');
 
+    let target = e.target;
     const selectedClass = target.classList[0];
     switch(selectedClass){
         case 'rock':
-            alert(playRound('rock', getComputerChoice()));
+            displayText.textContent = playRound('rock', getComputerChoice());
             break;
         case 'paper':
-            alert(playRound('paper', getComputerChoice()));
+            displayText.textContent = playRound('paper', getComputerChoice());
             break;
         case 'scissors':
-            alert(playRound('scissor', getComputerChoice()));
+            displayText.textContent = playRound('scissors', getComputerChoice());
             break;
         default:
             alert(selectedClass);
             break;
     }
 });
+
+function updateScoreText(){
+    let scoreText = document.querySelector('.results');
+    scoreText.textContent = `${playerWin} - ${computerWin}`;
+}
+
