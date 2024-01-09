@@ -49,10 +49,7 @@ function playRound(playerChoice, compChoice){
     }
 }
 
-// const playerSelection = "rock";
-// const computerSelection = getComputerChoice();
-// console.log(computerSelection);
-// console.log(playRound(playerSelection, computerSelection));
+// test
 
 function game(){
     for (let i = 0; i < 5; i++){
@@ -64,4 +61,16 @@ function game(){
         console.log(outcome);
     }
 }
-game();
+//game();
+
+let selections = document.querySelector('.selections');
+
+selections.addEventListener('click', (e) => {
+    let target = e.target;
+    const selectedClass = target.classList[0];
+    switch(selectedClass){
+        default:
+            alert(selectedClass);
+            break;
+    }
+});
