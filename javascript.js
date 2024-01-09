@@ -11,6 +11,7 @@ function getComputerChoice(){
 
 // Plays Round
 function playRound(playerChoice, compChoice){
+    if (playerWin >= 5 || computerWin >= 5) return;
     playerChoice = playerChoice.toLowerCase();
     let outcome = false;
     let tie = false;
@@ -77,6 +78,7 @@ selections.addEventListener('click', (e) => {
 
     let target = e.target;
     const selectedClass = target.classList[0];
+    if (playerWin >= 5 || computerWin >= 5) return;
     switch(selectedClass){
         case 'rock':
             displayText.textContent = playRound('rock', getComputerChoice());
@@ -90,6 +92,13 @@ selections.addEventListener('click', (e) => {
         default:
             alert(selectedClass);
             break;
+    }
+    if (playerWin >= 5) {
+        let winnerText = document.querySelector('.winner');
+        winnerText.textContent = `Player is the winner!`;
+    } else if (computerWin >= 5){
+        let winnerText = document.querySelector('.winner');
+        winnerText.textContent = `Computer is the winner!`;
     }
 });
 
