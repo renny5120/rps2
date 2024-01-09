@@ -67,8 +67,18 @@ let selections = document.querySelector('.selections');
 
 selections.addEventListener('click', (e) => {
     let target = e.target;
+
     const selectedClass = target.classList[0];
     switch(selectedClass){
+        case 'rock':
+            alert(playRound('rock', getComputerChoice()));
+            break;
+        case 'paper':
+            alert(playRound('paper', getComputerChoice()));
+            break;
+        case 'scissors':
+            alert(playRound('scissor', getComputerChoice()));
+            break;
         default:
             alert(selectedClass);
             break;
